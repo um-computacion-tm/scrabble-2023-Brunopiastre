@@ -2,7 +2,7 @@
 
 import unittest
 
-from game.Scrabble import (
+from game.models import (
 
     BagTiles,
 
