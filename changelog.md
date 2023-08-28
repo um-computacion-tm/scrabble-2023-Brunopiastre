@@ -9,6 +9,9 @@
 
 - Added the cell class
 - Added the cell test
+
+- Added the board class
+- Added the board test
 ### Changed 
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py
@@ -18,5 +21,6 @@
   
 ### Date
 - 27/08/23
+- 28/08/23
 - 28/08/23
 - 28/08/23
