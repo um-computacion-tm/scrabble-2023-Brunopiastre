@@ -15,6 +15,9 @@
 
 - Added the ScrabbleGame class
 - Added the ScrabbleGame test
+
+- Added the Endgame class
+- Added the Endgame test 
 ### Changed 
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py
@@ -24,6 +27,7 @@
   
 ### Date
 - 27/08/23
+- 28/08/23
 - 28/08/23
 - 28/08/23
 - 28/08/23
