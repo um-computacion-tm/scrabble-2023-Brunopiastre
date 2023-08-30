@@ -20,11 +20,12 @@
 - Added the Endgame test 
 ### Changed 
 - Modified scrabble.py to models.py
-- Modified test_scrabble.py to test_models.py
+- Modified test_scrabble.py to test_models.py 
+- Divided models class into Tiles class and BagTiles class 
 
 ### Fixed
+- Uppercase names were changed to lowercase names
 
-  
 ### Date
 - 27/08/23
 - 28/08/23
@@ -32,3 +33,4 @@
 - 28/08/23
 - 28/08/23
 - 28/08/23
+- 30/08/23

@@ -1,4 +1,5 @@
-from game.models import Tile
+from game.tile import Tile
+
 
 class Cell:
     def __init__(self, multiplier, multiplier_type):

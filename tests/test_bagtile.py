@@ -1,27 +1,8 @@
-
-
 import unittest
-
-from game.models import (
-
-    BagTiles,
-
-    Tile,
-
-)
-
+from game.bagtiles import BagTiles
 from unittest.mock import patch
+from game.tile import Tile
 
-
-class TestTiles(unittest.TestCase):
-
-    def test_tile(self):
-
-        tile = Tile('A', 1)
-
-        self.assertEqual(tile.letter, 'A')
-
-        self.assertEqual(tile.value, 1)
 
 class TestBagTiles(unittest.TestCase):
 

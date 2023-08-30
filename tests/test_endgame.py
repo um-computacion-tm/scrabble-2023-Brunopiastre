@@ -1,6 +1,6 @@
 import unittest
-from game.models import BagTiles
-from game.Endgame import GameEndConditions
+from game.bagtiles import BagTiles
+from game.endgame import GameEndConditions
 
 class TestGameEndConditions(unittest.TestCase):
 
