@@ -17,7 +17,9 @@
 - Added the ScrabbleGame test
 
 - Added the Endgame class
-- Added the Endgame test 
+- Added the Endgame test
+- Board
+    + Added calculate_word_value method and tests.
 ### Changed 
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py 
@@ -34,3 +36,4 @@
 - 28/08/23
 - 28/08/23
 - 30/08/23
+- 08/09/23
