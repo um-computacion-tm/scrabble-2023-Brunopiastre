@@ -27,6 +27,7 @@
 
 ### Fixed
 - Uppercase names were changed to lowercase names
+- Fixed an instance misstake
 
 ### Date
 - 27/08/23
