@@ -18,8 +18,12 @@
 
 - Added the Endgame class
 - Added the Endgame test
+
 - Board
-    + Added calculate_word_value method and tests.
+    + Added calculate_word_value method and test.
+
+- Scrabble
+    + Added next_turn method and test
 ### Changed 
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py 
