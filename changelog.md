@@ -16,15 +16,15 @@
 - Added the ScrabbleGame class
 - Added the ScrabbleGame test
 
-- Added the Endgame class
-- Added the Endgame test
-
 - Board
     + Added calculate_word_value method and test.
 
 - Scrabble
     + Added next_turn method and test
-### Changed 
+
+- Added dictionary class
+
+### Changed
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py 
 - Divided models class into Tiles class and BagTiles class 
@@ -42,3 +42,4 @@
 - 28/08/23
 - 30/08/23
 - 08/09/23
+- 12/09/23
