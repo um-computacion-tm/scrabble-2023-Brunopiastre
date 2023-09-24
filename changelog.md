@@ -29,11 +29,10 @@
 - Modified scrabble.py to models.py
 - Modified test_scrabble.py to test_models.py 
 - Divided models class into Tiles class and BagTiles class 
-
+. Player actualization
 ### Fixed
 - Uppercase names were changed to lowercase names
 - Fixed an instance misstake
-
 ### Date
 - 27/08/23
 - 28/08/23
@@ -45,6 +44,7 @@
 - 08/09/23
 - 12/09/23
 - 12/09/23
+- 24/09/23
 - 24/09/23
 - 24/09/23
 - 24/09/23
