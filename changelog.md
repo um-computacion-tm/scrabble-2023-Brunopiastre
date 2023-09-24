@@ -23,6 +23,7 @@
     + Added next_turn method and test
 
 - Added dictionary class
+- Added main class
 
 ### Changed
 - Modified scrabble.py to models.py
@@ -43,3 +44,5 @@
 - 30/08/23
 - 08/09/23
 - 12/09/23
+- 12/09/23
+- 24/09/23
