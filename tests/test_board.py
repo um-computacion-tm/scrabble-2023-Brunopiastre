@@ -2,15 +2,6 @@ import unittest
 from game.board import Board
 from game.tile import Tile
 
-
-#En este codigo tengo que hacer lo siguiente:
-
-
-# 1- Validar si el board is empty
-# 2- Validar si en empty board, la palabra pasa por el centro (vertical u horizontal)
-# 3- Validar si en board not empty, la palabra se cruza con una letra ya puesta.
-
-
 class TestBoard(unittest.TestCase):
 
     def test_init(self):

@@ -51,12 +51,9 @@ class Board:
                 return False
     
 
-#Nuevo metodo, ver que hace
 
 
     def validate_word_inside_board(self, word, location, orientation):
-
-        #WORK IN PROGRESS
 
         position_x = location[0]
 
@@ -75,6 +72,10 @@ class Board:
                 return True
 
         else:
+            if position_y + len_word > 15:
+                return False
+            else:
+                return True
 
             pass
 
