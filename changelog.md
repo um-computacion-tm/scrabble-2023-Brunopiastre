@@ -1,6 +1,20 @@
 # Changelog
   
 ### Added 
+- Added dictionary class
+- Added dictionary Test
+
+- Added main class
+
+- Board
+    + Added calculate_word_value method and test.
+    + Added Check_word method
+
+- Scrabble
+    + Added next_turn method and test
+
+
+
 - Added the Tile and BagTile classes
 - Added the Tile and BagTile Tests
 
@@ -16,14 +30,7 @@
 - Added the ScrabbleGame class
 - Added the ScrabbleGame test
 
-- Board
-    + Added calculate_word_value method and test.
 
-- Scrabble
-    + Added next_turn method and test
-
-- Added dictionary class
-- Added main class
 
 ### Changed
 - Modified scrabble.py to models.py
@@ -34,20 +41,22 @@
 - Uppercase names were changed to lowercase names
 - Fixed an instance misstake
 ### Date
-- 27/08/23
-- 28/08/23
-- 28/08/23
-- 28/08/23
-- 28/08/23
-- 28/08/23
-- 30/08/23
-- 08/09/23
-- 12/09/23
-- 12/09/23
-- 24/09/23
-- 24/09/23
-- 24/09/23
-- 24/09/23
-- 24/09/23
-- 24/09/23
+
+- 27/09/23
 - 25/09/23
+- 24/09/23
+- 24/09/23
+- 24/09/23
+- 24/09/23
+- 24/09/23
+- 24/09/23
+- 12/09/23
+- 12/09/23
+- 08/09/23
+- 30/08/23
+- 28/08/23
+- 28/08/23
+- 28/08/23
+- 28/08/23
+- 28/08/23
+- 27/08/23
