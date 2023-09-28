@@ -1,14 +1,16 @@
 # Changelog
   
 ### Added 
+- Board
+    + Added empty method and test
+    + Added Check_word method
+    + Added calculate_word_value method and test.
+
 - Added dictionary class
 - Added dictionary Test
 
 - Added main class
 
-- Board
-    + Added calculate_word_value method and test.
-    + Added Check_word method
 
 - Scrabble
     + Added next_turn method and test
@@ -42,6 +44,7 @@
 - Fixed an instance misstake
 ### Date
 
+- 28/09/23
 - 27/09/23
 - 25/09/23
 - 24/09/23

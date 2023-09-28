@@ -1,11 +1,26 @@
 from game.cell import Cell  
 
 class Board:
+    
     def __init__(self):
         self.grid = [
             [ Cell(1, '') for _ in range(15) ]
             for _ in range(15)
         ]
+
+
+    def check_word(self, word, file_path):
+        string_word = ''
+        for aux in word:
+            string_word += aux.letter.letter
+        string_word = string_word.lower()
+        with open(file_path, "r") as file:
+            words = file.read().splitlines()
+            if string_word in words:
+                return True
+            else:
+                return False
+
 
 
 
@@ -18,7 +33,7 @@ class Board:
         for aux in range(len(word)):          
             
             if word[aux].active == False:
-                    word[aux].multiplier = 1          #Por que multiplier y active no tiene color??
+                    word[aux].multiplier = 1        
             
             if word[aux].multiplier_type == 'letter':
                     suma += (word[aux].letter.value * word[aux].multiplier)
@@ -80,6 +95,10 @@ class Board:
             pass
 
 
-
-
+    #   ARREGLAR este o el test
+    def empty(self):
+        if self.grid[7][7].letter == None:
+            self.is_empty = True
+        else:
+            self.is_empty = False
     
