@@ -1,6 +1,12 @@
 # Changelog
   
 ### Added 
+
+- Scrabble
+    + Added Game over method and test
+    + Added next_turn method and test
+
+
 - Board
     + Added empty method and test
     + Added Check_word method
@@ -10,12 +16,6 @@
 - Added dictionary Test
 
 - Added main class
-
-
-- Scrabble
-    + Added next_turn method and test
-
-
 
 - Added the Tile and BagTile classes
 - Added the Tile and BagTile Tests
@@ -40,10 +40,12 @@
 - Divided models class into Tiles class and BagTiles class 
 . Player actualization
 ### Fixed
+
 - Uppercase names were changed to lowercase names
 - Fixed an instance misstake
 ### Date
 
+- 29/09/23
 - 28/09/23
 - 27/09/23
 - 25/09/23
