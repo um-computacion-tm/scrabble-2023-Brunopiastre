@@ -2,15 +2,16 @@
   
 ### Added 
 
+- Board
+    + Added empty method
+        * Added test_board_is_empty, not working 
+        * Added test_board_is_not_empty
+    + Added Check_word method   
+    + Added calculate_word_value method and test.
 - Scrabble
     + Added Game over method and test
     + Added next_turn method and test
 
-
-- Board
-    + Added empty method and test
-    + Added Check_word method
-    + Added calculate_word_value method and test.
 
 - Added dictionary class
 - Added dictionary Test
@@ -45,6 +46,7 @@
 - Fixed an instance misstake
 ### Date
 
+- 30/09/23
 - 29/09/23
 - 28/09/23
 - 27/09/23
