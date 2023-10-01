@@ -2,6 +2,9 @@
   
 ### Added 
 
+- Cell
+    + Added calculate_word method and test
+
 - Board
     + Added empty method
         * Added test_board_is_empty, not working 
@@ -46,6 +49,7 @@
 - Fixed an instance misstake
 ### Date
 
+- 1/10/23
 - 30/09/23
 - 29/09/23
 - 28/09/23

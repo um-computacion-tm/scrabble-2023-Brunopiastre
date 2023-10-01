@@ -50,6 +50,26 @@ class TestCell(unittest.TestCase):
         )
 
 
+    #revisar, Es 16?        
+    def test_calculate_word(self):
+        cell1 = Cell(multiplier=1, multiplier_type='letter')
+        cell2 = Cell(multiplier=2, multiplier_type='word')
+        cell3 = Cell(multiplier=1, multiplier_type='letter')
     
+        letter1 = Tile(letter='p', value=3)
+        letter2 = Tile(letter='y', value=4)
+        letter3 = Tile(letter='t', value=1)
+        
+        cell1.add_letter(letter1)
+        cell2.add_letter(letter2)
+        cell3.add_letter(letter3)
+        
+        cell1.word = [cell1, cell2, cell3]
+        
+        self.assertEqual(
+            cell1.calculate_word(),
+            16,
+        )    
+
 if __name__ == '__main__':
     unittest.main()
