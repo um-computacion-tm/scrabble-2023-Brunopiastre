@@ -1,6 +1,15 @@
 # Changelog
   
+### Date
+- 2/10/23
+### Added
+- Player
+    + Added get tiles method and test   
+
 ### Added 
+
+ 
+
 
 - Cell
     + Added calculate_word method and test
@@ -49,7 +58,9 @@
 - Fixed an instance misstake
 ### Date
 
+
 - 1/10/23
+- 30/09/23
 - 30/09/23
 - 29/09/23
 - 28/09/23
