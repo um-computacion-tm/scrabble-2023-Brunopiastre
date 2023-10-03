@@ -20,6 +20,11 @@ class TestPlayer(unittest.TestCase):
         )
 
 
+    def test_player(self):
+        player1 = Player()
+        self.assertEqual(player1.rack,[])
+
+
     def test_player_get_tile(self):
         bag1 = BagTiles()
         player = Player()
@@ -29,15 +34,7 @@ class TestPlayer(unittest.TestCase):
 
 
 
-    # def test_player(self):
-    #     player1 = Player()
-    #     self.assertEqual(player1.rack,[])
-
-
-
-
-
-        'Test que el profe hizo'
+        # 'Test que el profe hizo'
     # def test_validate_user_has_letters(self):
 
     #     bag_tile = BagTiles()
