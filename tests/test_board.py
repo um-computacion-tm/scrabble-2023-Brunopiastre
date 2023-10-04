@@ -64,13 +64,10 @@ class TestBoard(unittest.TestCase):
 
         assert word_is_valid == False
 
-
- #   ARREGLAR
  
-    # def test_board_is_empty(self):
-    #     board = Board()
-    #     board.empty()
-    #     assert board.is_empty == True
+    def test_board_is_empty(self):
+        board = Board()
+        assert board.is_empty == True
          
     def test_board_is_not_empty(self):
         board = Board()
@@ -81,7 +78,7 @@ class TestBoard(unittest.TestCase):
 
     # def test_place_word_empty_board_horizontal_fine(self):
 
-    #     board = Board()
+    #     board = Board() 
 
     #     word = "Facultad"
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 4/10/23
+### Fixed 
+- Board
+    + Empty method & test
+
 ## 3/10/23
 ### Added
 - Player
@@ -12,17 +17,16 @@
 ### Added
 - Player
     + Added get tiles  method and test   
+
 ## 1/10/23
 ### Added
 - Cell
     + Added calculate_word method and test
 
 
-
+---
 ## before october
 ### Added 
-
-
 
 - Board
     + Added empty method
