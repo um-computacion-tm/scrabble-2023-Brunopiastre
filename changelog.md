@@ -1,5 +1,9 @@
 # Changelog
 
+## 5/10/23
+### Added 
+- Player
+    + Implementation of exchange_tiles method & test
 ## 4/10/23
 ### Fixed 
 - Board
