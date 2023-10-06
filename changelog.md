@@ -1,5 +1,10 @@
 # Changelog
 
+## 6/10/23
+### Added 
+- Board
+    + Added validate_word_inside_board method & test_word_inside_board test
+    + Added word_out_of_board test
 ## 5/10/23
 ### Added 
 - Player
@@ -30,7 +35,7 @@
 
 ---
 ## before october
-### Added 
+### Addd 
 
 - Board
     + Added empty method
