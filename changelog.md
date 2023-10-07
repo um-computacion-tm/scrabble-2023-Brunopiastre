@@ -1,5 +1,16 @@
 # Changelog
 
+## 7/10/23
+### changed
+- Board
+    + modified test_board_is_empty
+    + test_board_is_not_empty, but is not working 
+### Added
+- Board 
+    + created test_place_word_empty_board_horizontal_fine
+    + created test_place_word_empty_board_horizontal_wrong, but is not working 
+    + created test_place_word_empty_board_vertical_fine
+    + created test_place_word_empty_board_vertical_wrong, but is not working 
 ## 6/10/23
 ### Added 
 - Board
