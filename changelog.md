@@ -1,5 +1,9 @@
 # Changelog
 
+## 8/10/23
+### Added
+- Main
+    + Created the main class it tests
 ## 7/10/23
 ### changed
 - Board
