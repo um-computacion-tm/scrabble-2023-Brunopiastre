@@ -1,10 +1,12 @@
 # Changelog
 
-
 ## 8/10/23
 ### Added
 - Main
     + Created the main class it tests
+### Fixed
+- Tile
+    + Fixed the Variable tile in test_tile
 ## 7/10/23
 ### changed
 - Board
