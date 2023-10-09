@@ -1,9 +1,14 @@
 # Changelog
 
+## 9/10/23
+### Added
+- Cli
+    + Created the cli class and it test
+    + created the get_player_count & test
 ## 8/10/23
 ### Added
 - Main
-    + Created the main class it tests
+    + Created the main class and it tests
 ### Fixed
 - Tile
     + Fixed the Variable tile in test_tile
