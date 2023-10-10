@@ -1,5 +1,10 @@
 # Changelog
 
+
+## 10/10/23
+### Added
+- Main
+    + Created the show_board method
 ## 9/10/23
 ### Added
 - Cli
