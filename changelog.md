@@ -1,6 +1,12 @@
 # Changelog
 
 
+## 11/10/23
+### Added
+- Cell
+    + Added repr method
+- Tile 
+    + Added repr method
 ## 10/10/23
 ### Added
 - Main

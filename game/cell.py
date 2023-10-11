@@ -8,10 +8,11 @@ class Cell:
         self.multiplier = multiplier
         self.multiplier_type = multiplier_type
         self.active= active
-        
 
-    def add_letter(self, letter:Tile):
+
+    def add_letter(self, letter:Tile, board):
         self.letter = letter
+        board.is_empty = False
 
     def calculate_value(self):
         if self.letter is None:
@@ -34,6 +35,12 @@ class Cell:
         return value
     
 
+    def __repr__(self):
+            if self.letter:
+                return repr(self.letter)
+            if self.multiplier > 1:
+                return f'{"W" if self.multiplier_type == "word" else "L"}x{self.multiplier}'
+            else:
+                return '   '
 
-
-    
+        
