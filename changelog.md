@@ -1,6 +1,13 @@
 # Changelog
 
 
+
+## 12/10/23
+## Changed
+- Cli
+    + Unificated the Cli and main class 
+- Engame
+    + Eliminated class endgame
 ## 11/10/23
 ### Added
 - Cell
