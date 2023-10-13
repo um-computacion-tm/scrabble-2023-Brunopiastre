@@ -2,6 +2,11 @@
 
 
 
+## 13/10/23
+## Fixed
+- Board
+    + test_board_is_not_empty is working now
+    + test_board
 ## 12/10/23
 ## Changed
 - Cli

@@ -16,6 +16,13 @@ class TestBoard(unittest.TestCase):
             15,
         )
     
+    def test_validate_word_len(self):
+        position_x = location [0]
+        position_y = location [1] 
+
+
+
+
 
     def test_word_inside_board(self):
             board = Board(is_empty=False)
@@ -43,10 +50,10 @@ class TestBoard(unittest.TestCase):
         board = Board()
         assert board.is_empty == True
 
-    # def test_board_is_not_empty(self):
-    #     board = Board()
-    #     board.grid[7][7].add_letter(Tile('C', 1),board)
-    #     assert board.is_empty == False
+    def test_board_is_not_empty(self):
+        board = Board()
+        board.grid[7][7].add_letter(Tile('C', 1),board)
+        assert board.is_empty == False
 
 
 
@@ -55,18 +62,18 @@ class TestBoard(unittest.TestCase):
         word = "Facultad"
         location = (7, 4)
         orientation = "H"
-        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+        word_is_valid = board.validate_word_center_board(word, location, orientation)
         assert word_is_valid == True
 
 
     
-    # def test_place_word_empty_board_horizontal_wrong(self):
-    #     board = Board()
-    #     word = "Facultad"
-    #     location = (2, 4)
-    #     orientation = "H"
-    #     word_is_valid = board.validate_word_inside_board(word, location, orientation)
-    #     assert word_is_valid == False
+    def test_place_word_empty_board_horizontal_wrong(self):
+        board = Board()
+        word = "Facultad"
+        location = (2, 4)
+        orientation = "H"
+        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        assert word_is_valid == False
 
 
 
@@ -75,17 +82,20 @@ class TestBoard(unittest.TestCase):
         word = "Facultad"
         location = (4, 7)
         orientation = "V"
-        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+        word_is_valid = board.validate_word_center_board(word, location, orientation)
         assert word_is_valid == True
     
-    # def test_place_word_empty_board_vertical_wrong(self):
-    #     board = Board()
-    #     word = "Facultad"
-    #     location = (2, 4)
-    #     orientation = "V"
-    #     word_is_valid = board.validate_word_inside_board(word, location, orientation)
-    #     assert word_is_valid == False
+    def test_place_word_empty_board_vertical_wrong(self):
+        board = Board()
+        word = "Facultad"
+        location = (2, 4)
+        orientation = "V"
+        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        assert word_is_valid == False
 
+
+    
+    
 
 if __name__ == '__main__':
 
