@@ -1,17 +1,20 @@
 # Changelog
 
-
+## 15/10/23
+## Fixed
+- Board
+    + test test_word_inside_board is working now
+    + test_word_out_of_board is working now
 
 ## 13/10/23
 ## Fixed
 - Board
     + test_board_is_not_empty is working now
-    + test_board
 ## 12/10/23
 ## Changed
 - Cli
     + Unificated the Cli and main class 
-- Engame
+- Endgame
     + Eliminated class endgame
 ## 11/10/23
 ### Added

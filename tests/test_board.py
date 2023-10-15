@@ -16,9 +16,9 @@ class TestBoard(unittest.TestCase):
             15,
         )
     
-    def test_validate_word_len(self):
-        position_x = location [0]
-        position_y = location [1] 
+    # def test_validate_word_len(self):
+    #     position_x = location [0]
+    #     position_y = location [1] 
 
 
 
@@ -92,6 +92,7 @@ class TestBoard(unittest.TestCase):
         orientation = "V"
         word_is_valid = board.validate_word_center_board(word, location, orientation)
         assert word_is_valid == False
+
 
 
     
