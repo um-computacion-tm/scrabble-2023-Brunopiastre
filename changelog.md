@@ -1,5 +1,8 @@
 # Changelog
 
+## 17/10/23
++ Cell
+    - Added calculate word value test
 ## 15/10/23
 ## Fixed
 - Board
