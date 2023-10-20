@@ -1,5 +1,30 @@
 # Changelog
 
+## 20/10/23
+## Added
++ Board
+    - test_place_word_empty_board_horizontal_inside_fine
+    - test_place_word_empty_board_horizontal_inside_wrong
+
+## 19/10/23
+## Added
++ Board 
+    - Clear cell method 
+    - validate_word_is_connected method 
+    - test_place_word_not_empty_conected_board_horizontal_fine
+    - test_place_word_not_empty_not_conected_board_horizontal_wrong
+    - test_place_word_not_empty_conected_board_vertical_fine
+    - test_place_word_not_empty_not_conected_board_vertical_wrong
+## Fixed
++ BagTiles
+    - Put test fixed
+## Modified
++ Cell class
+
+## 18/10/23
+## Added
++ Board 
+    + Added Validate word test 
 ## 17/10/23
 + Cell
     - Added calculate word value test
