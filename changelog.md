@@ -1,13 +1,22 @@
 # Changelog
 
+
+## 21/10/23
+### Added
++ Board
+    - test_place_word_board_vertical_inside_fine
+    - test_place_word_board_horizontal_center_wrong
+### changed
++ Board 
+    - Duplicated code deleted
 ## 20/10/23
-## Added
+### Added
 + Board
     - test_place_word_empty_board_horizontal_inside_fine
     - test_place_word_empty_board_horizontal_inside_wrong
 
 ## 19/10/23
-## Added
+### Added
 + Board 
     - Clear cell method 
     - validate_word_is_connected method 
@@ -15,31 +24,31 @@
     - test_place_word_not_empty_not_conected_board_horizontal_wrong
     - test_place_word_not_empty_conected_board_vertical_fine
     - test_place_word_not_empty_not_conected_board_vertical_wrong
-## Fixed
+### Fixed
 + BagTiles
     - Put test fixed
-## Modified
+### changed
 + Cell class
 
 ## 18/10/23
-## Added
+### Added
 + Board 
     + Added Validate word test 
 ## 17/10/23
 + Cell
     - Added calculate word value test
 ## 15/10/23
-## Fixed
+### Fixed
 - Board
     + test test_word_inside_board is working now
     + test_word_out_of_board is working now
 
 ## 13/10/23
-## Fixed
+### Fixed
 - Board
     + test_board_is_not_empty is working now
 ## 12/10/23
-## Changed
+### Changed
 - Cli
     + Unificated the Cli and main class 
 - Endgame

@@ -27,12 +27,11 @@ class TestBoard(unittest.TestCase):
     
             assert word_is_valid == True
 
-# Deberia funcionar
 
     def test_word_out_of_board(self):
         board = Board()
         word = "Facultad"
-        location = (4, 14)
+        location = (14, 4)
         orientation = "V"
 
         word_is_valid = board.validate_word_len(word, location, orientation)
@@ -58,7 +57,7 @@ class TestBoard(unittest.TestCase):
         word = "Facultad"
         location = (7, 4)
         orientation = "H"
-        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
         assert word_is_valid == True
     
     
@@ -72,12 +71,12 @@ class TestBoard(unittest.TestCase):
 
 
     
-    def test_place_word_empty_board_horizontal_center_wrong(self):
+    def test_place_word_board_horizontal_center_wrong(self):
         board = Board()
-        word = "Facultad"
-        location = (2, 4)
+        word = "australopitecus"
+        location = (7, 7)
         orientation = "H"
-        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        word_is_valid = board.validate_word_len(word, location, orientation)
         assert word_is_valid == False
 
 
@@ -99,7 +98,15 @@ class TestBoard(unittest.TestCase):
         word = "Facultad"
         location = (4, 7)
         orientation = "V"
-        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+        assert word_is_valid == True
+    
+    def test_place_word_empty_board_vertical_center_inside_fine(self):
+        board = Board()
+        word = "Facultad"
+        location = (4, 7)
+        orientation = "V"
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
         assert word_is_valid == True
     
     def test_place_word_empty_board_vertical_center_wrong(self):
@@ -107,7 +114,7 @@ class TestBoard(unittest.TestCase):
         word = "Facultad"
         location = (2, 4)
         orientation = "V"
-        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
         assert word_is_valid == False
 
 
@@ -117,8 +124,16 @@ class TestBoard(unittest.TestCase):
         word = "hipoacustico"
         location = (3,3)
         orientation = "V"
-        word_is_valid = board.validate_word_center_board(word, location, orientation)
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
         assert word_is_valid == False
+
+    def test_place_word_board_vertical_inside_fine(self):
+        board = Board()
+        word = "hipoacustico"
+        location = (3,3)
+        orientation = "V"
+        word_is_valid = board.validate_word_len(word, location, orientation)
+        assert word_is_valid == True
 
     def test_place_word_empty_board_vertical_inside_wrong(self):
         board = Board()
