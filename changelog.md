@@ -1,6 +1,17 @@
 # Changelog
 
 
+## 23/10/23
+### Added
++ Cli
+    - test_repr
+    - test_repr2
+    - test_repr3
+    - test_repr4
+### Fixed
++ Cli
+    - repr
+
 ## 21/10/23
 ### Added
 + Board

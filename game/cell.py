@@ -1,6 +1,5 @@
 from game.tile import Tile
 
-
 class Cell: 
     
     def __init__(self, multiplier=1, multiplier_type='letter', letter=None, active=True):
@@ -22,26 +21,13 @@ class Cell:
         else:
             return self.letter.value
 
-
-    def calculate_word(self):
-        value=0 
-        for letras in self.word:
-            value_letra = Cell.calculate_value(letras)
-            value += value_letra
-
-        for letra in self.word:
-            if letra.multiplier_type == "word" and letra.active == True:
-                value = value * letra.multiplier
-        return value
-    
-
     def __repr__(self):
-            if self.letter:
-                return repr(self.letter)
-            if self.multiplier > 1:
-                return f'{"W" if self.multiplier_type == "word" else "L"}x{self.multiplier}'
-            else:
-                return '   '
+        if self.letter:
+            return repr(self.letter)
+        if self.multiplier > 1:
+            return f'{"W" if self.multiplier_type == "word" else "L"}x{self.multiplier}'
+        else:
+            return '   '
 
 
 

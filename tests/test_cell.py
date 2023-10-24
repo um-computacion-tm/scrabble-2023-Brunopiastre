@@ -53,39 +53,21 @@ class TestCell(unittest.TestCase):
             3,
         )
 
+    def test_repr(self):
+        cell = Cell(2, "word")
+        self.assertEqual(repr(cell), 'Wx2')
+    
+    def test_repr2(self):
+        cell = Cell(1, "word")
+        self.assertEqual(repr(cell), '   ')
 
-    def test_calculate_word():
-    # Test case 1: Single-letter word
-    cell = Cell('A', 1, None)
-    word = Word([cell])
-    assert word.calculate_word() == 1
+    def test_repr3(self):
+        cell = Cell(1, "word", letter=("A", 1))
+        self.assertEqual(repr(cell), "('A', 1)")
 
-    # Test case 2: Word with different letter values
-    cell1 = Cell('H', 1, None)
-    cell2 = Cell('E', 1, None)
-    cell3 = Cell('L', 1, None)
-    cell4 = Cell('L', 1, None)
-    cell5 = Cell('O', 1, None)
-    word = Word([cell1, cell2, cell3, cell4, cell5])
-    assert word.calculate_word() == 31
+    def test_repr4(self):
+        cell = Cell(2, "letter")
+        self.assertEqual(repr(cell), 'Lx2')
 
-    # Test case 3: Word with letter and word multipliers
-    cell1 = Cell('D', 2, 'word')
-    cell2 = Cell('O', 1, None)
-    cell3 = Cell('G', 3, 'word')
-    word = Word([cell1, cell2, cell3])
-    assert word.calculate_word() == 18
-
-    # Test case 4: Word with inactive letter
-    cell1 = Cell('A', 1, None)
-    cell2 = Cell('B', 2, 'word', False)
-    cell3 = Cell('C', 1, None)
-    word = Word([cell1, cell2, cell3])
-    assert word.calculate_word() == 2
-
-    print("All test cases passed")
-
-
-        
 if __name__ == '__main__':
     unittest.main()
