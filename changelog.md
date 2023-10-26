@@ -1,17 +1,23 @@
 # Changelog
 
 
-## 23/10/23
+## 26/10/23
+### Added 
++ Scrabble 
+    - end_game method & test
+    - display_tiles method & test
+    - show_score method & test
+
+## 24/10/23
 ### Added
-+ Cli
++ Cell
     - test_repr
     - test_repr2
     - test_repr3
     - test_repr4
 ### Fixed
-+ Cli
++ Cell
     - repr
-
 ## 21/10/23
 ### Added
 + Board
