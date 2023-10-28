@@ -1,5 +1,10 @@
 # Changelog
 
+## 28/10/23
+### Added 
++ Main
+    - Main method 
+
 ## 27/10/23
 ### Added
 + Player 
