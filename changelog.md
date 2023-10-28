@@ -1,5 +1,16 @@
 # Changelog
 
+## 27/10/23
+### Added
++ Player 
+    - set_nickname method & test
+
++ Board
+    - triple_word_multiplier
+    - double_word_multiplier
+    - triple_letter_multiplier
+    - double_letter_multiplier
+    
 
 ## 26/10/23
 ### Added 
