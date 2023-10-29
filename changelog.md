@@ -1,5 +1,16 @@
 # Changelog
 
+
+## 29/10/23
+### Added
++ BagTile
+    - Get_tile method and test
+
++ Scrabble
+    - show board method & test 
+
++ Tile
+    - repr method & test
 ## 28/10/23
 ### Added 
 + Main
@@ -7,7 +18,7 @@
 
 ## 27/10/23
 ### Added
-+ Player 
++ Player
     - set_nickname method & test
 
 + Board

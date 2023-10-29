@@ -16,17 +16,8 @@ class ScrabbleGame:
 
 
     def next_turn(self):
-        if self.current_player == len(self.players) - 1:
-            self.current_player = 0
-        else:
-            self.current_player += 1
+        self.current_player = (self.current_player + 1) % len(self.players)
 
-
-
-
-    def game_over(self):
-        return not self.bag_tiles
-    
 
     def show_score(self):
         print("Su puntaje es :",self.players[self.current_player].score)
@@ -40,3 +31,23 @@ class ScrabbleGame:
         if len(self.bag_tiles.tiles) == 0:
                 return True
         return False
+    
+
+
+    def create_tile_list(self, word, bag_tiles):
+        tile_list = []
+        for letter in word:
+            tile = bag_tiles.get_tile(letter)
+            tile_list.append(tile)
+        return tile_list
+    
+
+    def show_board(self):
+        print('\n  |' + ''.join([f' {str(row_index).rjust(2)} ' for row_index in range(15)]))
+        for row_index, row in enumerate(self.board.grid):
+            print(
+                str(row_index).rjust(2) +
+                '| ' +
+                ' '.join([repr(cell) for cell in row])
+            )
+    

@@ -120,16 +120,5 @@ class BagTiles:
         self.tiles.extend(tiles)
 
 
-
-    # def initial_tiles(self):
-    #     total = []
-    #     initial_tiles = {'A': 11, 'E': 11, 'O': 8, 'I': 5, 'S': 5, 'N': 4, 'L': 3, 'R': 4, 'U': 4, 'T': 3, 'D': 4, 'G': 1, 'C': 3, 'B': 1, 'M': 1, 'P': 1, 'H': 1, '?': 1}
-    #     while len(total) < 100:
-    #         for letter, amount in initial_tiles.items():
-    #             new_tiles = [x for x in bag.tiles if x.letter == letter]
-    #             count = min(amount, 100 - len(total))
-    #             total.extend(new_tiles[:count])
-    #     self.tiles.extend(total)
-
-
-
+    def get_tile(self, letter):
+        return next((tile for tile in self.tiles if tile.letter == letter), None)

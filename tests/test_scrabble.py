@@ -1,8 +1,8 @@
 import unittest
+from unittest.mock import patch
 from game.scrabble import ScrabbleGame
-# from game.board import Board
 from game.tile import Tile
-# from game.cell import Cell
+from game.cell import Cell
 from game.player import Player
 import io
 import sys
@@ -44,15 +44,7 @@ class TestScrabbleGame(unittest.TestCase):
         scrabble_game.next_turn()
 
         assert scrabble_game.current_player == 0
-
-
-
-    def test_game_over(self):
-        scrabble_game = ScrabbleGame(players_count=3)
-        scrabble_game.bag_tiles = []  
-        self.assertTrue(scrabble_game.game_over())
-
-
+        
 
     def test_show_score(self):
         scrabblegame = ScrabbleGame(players_count=3)
@@ -100,5 +92,53 @@ class TestScrabbleGame(unittest.TestCase):
             expected_output = """[A,1] [B,2] [C,3] [D,3] [E,1] [F,4] [G,2] """
             self.assertEqual(output,expected_output)
 
+
+    
+
+    def test_show_board(self):
+
+        scrabblegame = ScrabbleGame(players_count=3)
+        scrabblegame.board.grid = [
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('A', 1)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+            [Cell(letter=Tile('B', 2)) for _ in range(15)],
+        ]
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        scrabblegame.show_board()
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        expected_output = """
+  |  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14 
+ 0| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+ 1| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+ 2| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+ 3| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+ 4| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+ 5| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+ 6| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+ 7| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+ 8| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+ 9| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+10| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+11| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+12| A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1 A:1
+13| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+14| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
+"""
+        self.assertEqual(output,expected_output)
+        
 if __name__ == '__main__':
     unittest.main()
