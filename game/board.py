@@ -1,4 +1,5 @@
-from game.cell import Cell  
+from game.cell import Cell 
+from game.dictionary import Dictionary
 
 
 triple_word_multiplier = ((0, 0), (7, 0), (14, 0), (0, 7), (14, 7), (0, 14), (7, 14), (14, 14))
@@ -68,13 +69,6 @@ class Board:
                 return False
             else:
                 return True
-            
-    # def empty(self):
-    #     if self.grid[7][7].letter == None:
-    #         self.is_empty = True
-    #     else:
-    #         self.is_empty = False
-
 
 
     def check_word(self, word, file_path):
@@ -149,3 +143,27 @@ class Board:
     def set_Cell_multiplier(self, coordinate, multiplier_type, multiplier_value):
         self.grid[coordinate[0]][coordinate[1]].multiplier_type = multiplier_type
         self.grid[coordinate[0]][coordinate[1]].multiplier = multiplier_value
+
+
+
+    def put_word(self, word, location, orientation):
+        x, y = map(int, location)
+        dx, dy = (0, 1) if orientation == 'H' else (1, 0)
+
+        for letter in word:
+            self.grid[x][y] = letter
+            x, y = x + dx, y + dy
+
+
+    def validate_word_placement(self, word, location, orientation, scrabbleGame):
+        validations = [
+            self.validate_word_is_connected(word, location, orientation),
+            self.validate_word_len(word, location, orientation),
+            self.validate_word_inside_board(word, location, orientation),
+            self.check_word(word, Dictionary().file_path),
+            scrabbleGame.players[scrabbleGame.current_player].validate_tiles(word)
+        ]
+
+        if any(not valid for valid in validations):
+            return False 
+        return True

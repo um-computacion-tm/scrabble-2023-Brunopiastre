@@ -1,6 +1,8 @@
 import unittest
 from game.board import Board
 from game.tile import Tile
+from game.scrabble import ScrabbleGame
+
 
 class TestBoard(unittest.TestCase):
 
@@ -145,10 +147,6 @@ class TestBoard(unittest.TestCase):
 
 
 
-
-
-
-
     def test_place_word_not_empty_conected_board_horizontal_fine(self):
         board = Board()
         board.grid[7][7].add_letter(Tile('C', 1),board)
@@ -197,28 +195,60 @@ class TestBoard(unittest.TestCase):
         word_is_valid = board.validate_word_is_connected(word, location, orientation)
         assert word_is_valid == False
 
-    # def test_place_tile(self):
-    #     board = Board()
-    #     tile = Tile('A', 1)
-    #     self.assertTrue(board.place_tile(7, 7, tile))
-    #     self.assertFalse(board.place_tile(7, 7, tile))
+    def test_put_word_horizontal(self):
+        game = ScrabbleGame(2)
+        word = 'GATOS'
+        location = (7, 7)
+        orientation = 'H'   
+        game.board.put_word(game.create_tile_list(word, game.bag_tiles), location, orientation)
 
-    # def test_clear_cell_valid(self):
-    #     board = Board()
-    #     tile = Tile('A', 1)
+        self.assertEqual(game.board.grid[location[0]][location[1]].letter, word[0])
+        self.assertEqual(game.board.grid[location[0]][location[1] + 1].letter, word[1])
+        self.assertEqual(game.board.grid[location[0]][location[1] + 2].letter, word[2])
+        self.assertEqual(game.board.grid[location[0]][location[1] + 3].letter, word[3])
+        self.assertEqual(game.board.grid[location[0]][location[1] + 4].letter, word[4])
 
-    #     # Colocamos una ficha en una celda
-    #     board.place_tile(7, 7, tile)
-    #     # Luego la limpiamos
-    #     board.clear_cell(7, 7)
-    #     # Comprobamos que la celda esté vacía     
-    #     self.assertIsNone(board.grid[7][7].letter)
+            
+    def test_put_word_vertical(self):
+        game = ScrabbleGame(2)
+        word = 'HELLO'
+        location = (7, 7)
+        orientation = 'V'
+        game.board.put_word(game.create_tile_list(word, game.bag_tiles), location, orientation)
 
-    # def test_clear_cell_invalid(self):
-    #     board = Board()
-    #     result = board.clear_cell(16, 16)
-    #     self.assertFalse(result)
+        self.assertEqual(game.board.grid[location[0]][location[1]].letter, word[0])
+        self.assertEqual(game.board.grid[location[0] + 1][location[1]].letter, word[1])
+        self.assertEqual(game.board.grid[location[0] + 2][location[1]].letter, word[2])
+        self.assertEqual(game.board.grid[location[0] + 3][location[1]].letter, word[3])
+        self.assertEqual(game.board.grid[location[0] + 4][location[1]].letter, word[4])
 
+    
+
+
+
+    def test_validate_word_placement(self):
+        game = ScrabbleGame(2)
+        player = game.players[0]
+        player.tiles = [Tile('H', 1), Tile('E', 1), Tile('L', 1), Tile('O', 1)]
+
+        tests = [
+            ('HELLO', (7, 7), 'H', True),
+
+            ('HELLO', (7, 12), 'H', False),
+
+            ('SCRABBLE', (8, 6), 'H', False),
+
+            ('GAME', (7, 7), 'H', False),
+
+        ]
+
+    # def test_validate_word_placement1(self):
+    #     game = ScrabbleGame(2)
+    #     game.players[0].tiles = [Tile('C', 1), Tile('A', 1), Tile('S', 1), Tile('A', 1), Tile('E', 1), Tile('A', 1), Tile('R', 1)]
+
+    #     game.board.put_word(game.create_tile_list('CASA', game.bag_tiles), (7, 7), 'H')
+
+    #     assert game.board.validate_word_placement('CAER', (7, 8), 'V', game) == False
 
 if __name__ == '__main__':
 
