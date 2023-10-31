@@ -38,7 +38,7 @@ class ScrabbleGame:
         if len(self.bag_tiles.tiles) == 0:
                 return True
         return False
-    
+
 
 
     def create_tile_list(self, word, bag_tiles):
@@ -54,6 +54,21 @@ class ScrabbleGame:
                 '| ' +
                 ' '.join([repr(cell) for cell in row])
             )
+    
+
+    def create_cell_list(self, word, location, orientation):
+        x, y = map(int, location)
+        grid = self.board.grid
+
+        if orientation == 'H':
+            cells = [grid[x][y + i] for i in range(len(word))]
+        else:
+            cells = [grid[x + i][y] for i in range(len(word))]
+
+        return cells
+    
+
+
     
 
     # def Tiles_to_change_ask (self)

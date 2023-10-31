@@ -1,7 +1,13 @@
 # Changelog
+
+
 ## 31/10/23
 ### Added
-
++ Scrabble 
+    - create_cell_list method & test
+    - create_cell_list_vertical test
+    - create_cell_list_horizontal test
+    
 + Player
     - Increase score method & tests
 + Scrabble

@@ -145,8 +145,33 @@ class TestScrabbleGame(unittest.TestCase):
 
 
 
-   
+    def test_create_cell_list_horizontal(self):
+        scrabbleGame = ScrabbleGame(2)
+        word = 'TEST'
+        location = (0, 0)
+        orientation = 'H'
 
-        
+        cell_list = scrabbleGame.create_cell_list(word, location, orientation)
+
+        expected_cells = [scrabbleGame.board.grid[0][i] for i in range(4)]
+        self.assertEqual(len(cell_list), 4)
+        self.assertEqual(cell_list, expected_cells)
+
+
+    def test_create_cell_list_vertical(self):
+        scrabbleGame = ScrabbleGame(2)
+        word = 'TEST'
+        location = (0, 0)
+        orientation = 'V'
+
+        cell_list = scrabbleGame.create_cell_list(word, location, orientation)
+
+        expected_cells = [scrabbleGame.board.grid[i][0] for i in range(4)]
+        self.assertEqual(len(cell_list), 4)
+        self.assertEqual(cell_list, expected_cells)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()
