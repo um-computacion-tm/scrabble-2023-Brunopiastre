@@ -1,3 +1,10 @@
+import random
+from game.board import Board
+from game.player import Player
+from game.bagtiles import BagTiles
+
+
+
 from game.board import Board
 from game.player import Player
 from game.bagtiles import BagTiles
@@ -35,11 +42,8 @@ class ScrabbleGame:
 
 
     def create_tile_list(self, word, bag_tiles):
-        tile_list = []
-        for letter in word:
-            tile = bag_tiles.get_tile(letter)
-            tile_list.append(tile)
-        return tile_list
+        return [bag_tiles.get_tile(letter) for letter in word]
+
     
 
     def show_board(self):
@@ -51,3 +55,5 @@ class ScrabbleGame:
                 ' '.join([repr(cell) for cell in row])
             )
     
+
+    # def Tiles_to_change_ask (self)

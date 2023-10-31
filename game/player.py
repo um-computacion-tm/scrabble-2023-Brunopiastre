@@ -16,12 +16,15 @@ class Player:
         self.nickname = str(input('Ingrese su apodo: '))
  
 
-#Arreglar
+    def increse_score(self,amount):
+        self.amount=amount
+        self.score+=amount
 
-    # def exchange_tiles(self,index,bag=BagTiles):
-    #     tile_to_exchange = self.rack.pop(index)
-    #     new_tile = bag.take(1)
-    #     bag.put([tile_to_exchange])
-    #     self.rack.append(new_tile)
 
-        
+
+    def validate_tiles(self, word):
+        return set(word).issubset(tile.letter for tile in self.tiles)
+
+    
+    def remove_tiles(self, word):
+        self.tiles = [tile for tile in self.tiles if tile.letter not in word]

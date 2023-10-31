@@ -1,6 +1,20 @@
 # Changelog
+## 31/10/23
+### Added
 
++ Player
+    - Increase score method & tests
++ Scrabble
+    - Create tile list method 
+    
+## 30/10/23
+### Added
 
++ Board
+    - validate_word_placement method 
+    - put_word method
+    - test_put_word_horizontal
+    - test_put_word_vertical 
 ## 29/10/23
 ### Added
 + BagTile

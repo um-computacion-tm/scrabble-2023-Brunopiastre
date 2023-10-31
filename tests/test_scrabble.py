@@ -7,6 +7,7 @@ from game.player import Player
 import io
 import sys
 
+
 class TestScrabbleGame(unittest.TestCase):
         
     def test_init(self):
@@ -93,7 +94,7 @@ class TestScrabbleGame(unittest.TestCase):
             self.assertEqual(output,expected_output)
 
 
-    
+
 
     def test_show_board(self):
 
@@ -139,6 +140,13 @@ class TestScrabbleGame(unittest.TestCase):
 14| B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2 B:2
 """
         self.assertEqual(output,expected_output)
+
+
+
+
+
+   
+
         
 if __name__ == '__main__':
     unittest.main()
