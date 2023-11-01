@@ -147,80 +147,74 @@ class TestBoard(unittest.TestCase):
 
 
 
-    def test_place_word_not_empty_conected_board_horizontal_fine(self):
-        board = Board()
-        board.grid[7][7].add_letter(Tile('C', 1),board)
-        board.grid[8][7].add_letter(Tile('A', 1),board)
-        board.grid[9][7].add_letter(Tile('S', 1),board)
-        board.grid[10][7].add_letter(Tile('A', 1),board)
+    
+    def test_place_word_not_empty_board_horizontal_fine(self):
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1), scrabbleGame.board)
+        scrabbleGame.board.grid[8][7].add_letter(Tile('A', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[9][7].add_letter(Tile('S', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[10][7].add_letter(Tile('A', 1), scrabbleGame.board) 
         word = "Facultad"
         location = (8, 6)
         orientation = "H"
-        word_is_valid = board.validate_word_is_connected(word, location, orientation)
-        assert word_is_valid == True
+        word_is_valid = scrabbleGame.board.validate_word_is_connected(word, location, orientation, scrabbleGame) 
+        self.assertEqual(word_is_valid, True)
 
-    def test_place_word_not_empty_not_conected_board_horizontal_wrong(self):
-        board = Board()
-        board.grid[7][7].add_letter(Tile('T', 1),board)
-        board.grid[8][7].add_letter(Tile('R', 1),board)
-        board.grid[9][7].add_letter(Tile('E', 1),board)
-        board.grid[10][7].add_letter(Tile('S', 1),board)
-        word = "Facultad"
-        location = (9, 6)
+    def test_place_word_not_empty_board_horizontal_wrong(self):
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1), scrabbleGame.board)
+        scrabbleGame.board.grid[8][7].add_letter(Tile('A', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[9][7].add_letter(Tile('S', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[10][7].add_letter(Tile('A', 1), scrabbleGame.board) 
+        word = "oraculo"
+        location = (8, 6)
         orientation = "H"
-        word_is_valid = board.validate_word_is_connected(word, location, orientation)
-        assert word_is_valid == False
+        word_is_valid = scrabbleGame.board.validate_word_is_connected(word, location, orientation, scrabbleGame)
+        self.assertEqual(word_is_valid, False)
 
+        
     def test_place_word_not_empty_conected_board_vertical_fine(self):
-        board = Board() 
-        board.grid[7][7].add_letter(Tile('C', 1),board)
-        board.grid[7][8].add_letter(Tile('A', 1),board)
-        board.grid[7][9].add_letter(Tile('S', 1),board)
-        board.grid[7][10].add_letter(Tile('A', 1),board)
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][8].add_letter(Tile('A', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][9].add_letter(Tile('S', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][10].add_letter(Tile('A', 1),scrabbleGame.board)
         word = "Facultad"
         location = (6, 8)
         orientation = "V"
-        word_is_valid = board.validate_word_is_connected(word, location, orientation)
+        word_is_valid = scrabbleGame.board.validate_word_is_connected(word, location, orientation, scrabbleGame)
         assert word_is_valid == True
 
     def test_place_word_not_empty_not_conected_board_vertical_wrong(self):
-        board = Board() 
-        board.grid[7][7].add_letter(Tile('C', 1),board)
-        board.grid[7][8].add_letter(Tile('A', 1),board)
-        board.grid[7][9].add_letter(Tile('S', 1),board)
-        board.grid[7][10].add_letter(Tile('A', 1),board)
-        word = "Facultad"
-        location = (6,9)
-        orientation = "V"
-        word_is_valid = board.validate_word_is_connected(word, location, orientation)
-        assert word_is_valid == False
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1), scrabbleGame.board)
+        scrabbleGame.board.grid[7][8].add_letter(Tile('A', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[7][9].add_letter(Tile('S', 1), scrabbleGame.board) 
+        scrabbleGame.board.grid[7][10].add_letter(Tile('A', 1), scrabbleGame.board) 
+        word = "oraculo"
+        location = (6, 8)
+        orientation = "V"  
+        word_is_valid = scrabbleGame.board.validate_word_is_connected(word, location, orientation, scrabbleGame)
+        self.assertEqual(word_is_valid, False)
 
     def test_put_word_horizontal(self):
         game = ScrabbleGame(2)
-        word = 'GATOS'
-        location = (7, 7)
-        orientation = 'H'   
-        game.board.put_word(game.create_tile_list(word, game.bag_tiles), location, orientation)
-
-        self.assertEqual(game.board.grid[location[0]][location[1]].letter, word[0])
-        self.assertEqual(game.board.grid[location[0]][location[1] + 1].letter, word[1])
-        self.assertEqual(game.board.grid[location[0]][location[1] + 2].letter, word[2])
-        self.assertEqual(game.board.grid[location[0]][location[1] + 3].letter, word[3])
-        self.assertEqual(game.board.grid[location[0]][location[1] + 4].letter, word[4])
+        game.board.put_word(game.create_tile_list('HELLO', game.bag_tiles), (7, 7), 'H')
+        self.assertEqual(game.board.grid[7][7].letter.letter, 'H')
+        self.assertEqual(game.board.grid[7][8].letter.letter, 'E')
+        self.assertEqual(game.board.grid[7][9].letter.letter, 'L')
+        self.assertEqual(game.board.grid[7][10].letter.letter, 'L')
+        self.assertEqual(game.board.grid[7][11].letter.letter, 'O')
 
             
     def test_put_word_vertical(self):
         game = ScrabbleGame(2)
-        word = 'HELLO'
-        location = (7, 7)
-        orientation = 'V'
-        game.board.put_word(game.create_tile_list(word, game.bag_tiles), location, orientation)
-
-        self.assertEqual(game.board.grid[location[0]][location[1]].letter, word[0])
-        self.assertEqual(game.board.grid[location[0] + 1][location[1]].letter, word[1])
-        self.assertEqual(game.board.grid[location[0] + 2][location[1]].letter, word[2])
-        self.assertEqual(game.board.grid[location[0] + 3][location[1]].letter, word[3])
-        self.assertEqual(game.board.grid[location[0] + 4][location[1]].letter, word[4])
+        game.board.put_word(game.create_tile_list('HELLO', game.bag_tiles), (7, 7), 'V')
+        self.assertEqual(game.board.grid[7][7].letter.letter, 'H')
+        self.assertEqual(game.board.grid[8][7].letter.letter, 'E')
+        self.assertEqual(game.board.grid[9][7].letter.letter, 'L')
+        self.assertEqual(game.board.grid[10][7].letter.letter, 'L')
+        self.assertEqual(game.board.grid[11][7].letter.letter, 'O')
 
     
 
@@ -240,17 +234,27 @@ class TestBoard(unittest.TestCase):
 
             ('GAME', (7, 7), 'H', False),
 
+
         ]
 
-    # def test_validate_word_placement1(self):
-    #     game = ScrabbleGame(2)
-    #     game.players[0].tiles = [Tile('C', 1), Tile('A', 1), Tile('S', 1), Tile('A', 1), Tile('E', 1), Tile('A', 1), Tile('R', 1)]
+    def test_validate_word_placement_not_empty(self):
+        game = ScrabbleGame(2)
+        game.board.is_empty = False
+        game.board.grid[7][7].add_letter(Tile('C', 1), game.board)
+        game.board.grid[7][8].add_letter(Tile('A', 1), game.board) 
+        game.board.grid[7][9].add_letter(Tile('S', 1), game.board) 
+        game.board.grid[7][10].add_letter(Tile('A', 1), game.board) 
+        game.players[0].tiles = [ Tile('A', 1), Tile('S', 1), Tile('A', 1)]
 
-    #     game.board.put_word(game.create_tile_list('CASA', game.bag_tiles), (7, 7), 'H')
+        assert game.board.validate_word_placement('CASA', (7, 7), 'V', game) == True
 
-    #     assert game.board.validate_word_placement('CAER', (7, 8), 'V', game) == False
+    
+
+ 
 
 if __name__ == '__main__':
 
     unittest.main()
+
+
 

@@ -3,6 +3,17 @@
 ## 1/11/23
 ### Added
 
+### Fixed 
++ Board
+    - Tests 
+
++ Dictionary
+    - Tests
+
++ Board
+    - test_validate_word_placement_not_empty
+
+
 + Pĺayer
     - get_connected_tile
     - test_validate_tiles changed

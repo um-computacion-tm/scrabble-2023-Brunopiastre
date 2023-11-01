@@ -48,79 +48,52 @@ class Board:
 
 
     def validate_word_len(self, word, location, orientation):
-        position_x = location[0]
-        position_y = location[1]
-        self.word = word
-
+        position_x, position_y = location
+        position_x, position_y = int(position_x), int(position_y)
         len_word = len(word)
 
-        if orientation == "H":
-
-            if position_y + len_word > 15:
-
-                return False
-
-            else:
-
-                return True
-
-        else:   
-            if position_x + len_word > 15:
-                return False
-            else:
-                return True
-
-
-    def check_word(self, word, file_path):
-        string_word = ''
-        for aux in word:
-            string_word += aux.letter.letter
-        string_word = string_word.lower()
-        with open(file_path, "r") as file:
-            words = file.read().splitlines()
-            if string_word in words:
-                return True
-            else:
-                return False
-
-
-    def validate_word_inside_board(self, word, location, orientation):
-
-            position_x = location[0]
-            position_y = location[1]
-            len_word = len(word)
-            x = position_x
-            y = position_y
-            if (self.is_empty == True) & (orientation == 'H'):
-                for i in range(len_word):
-                    y += 1
-                    if (x==7) & (y==7):
-                        return True
-                return False 
-            if (self.is_empty == True) & (orientation == 'V'):
-                for i in range(len_word):
-                    x += 1
-                    if (x==7) & (y==7):
-                        return True
-                return False
-                
-
-
-
-    def validate_word_is_connected(self, word, location, orientation):
-        word = word.upper()
-        x, y = location
-
-        for letter in word:
-            if self.grid[x][y].letter and self.grid[x][y].letter.letter == letter:
-                return True
-
-            if orientation == 'H':
-                y += 1
-            elif orientation == 'V':
-                x += 1
+        if orientation == "H" and position_y + len_word <= 15:
+            return True
+        elif orientation == 'V' and position_x + len_word <= 15:
+            return True
 
         return False
+
+
+    def check_word(self,word, file_path):
+        wordletter = word
+        wordletter = wordletter.lower()
+        with open(file_path, "r") as file:
+            words = file.read().splitlines()
+            if wordletter in words:
+                return True
+            else:
+                return False
+
+    def validate_word_inside_board(self, word, location, orientation):
+            x, y= location
+            x, y= int(x), int(y)
+            len_word = len(word)
+            if (self.is_empty == True):
+                for i in range(len_word):
+                    if ((x==7) & (y==7)) & (self.validate_word_len(word, location, orientation)== True):
+                           return True
+                    if (orientation == 'H'):
+                        y += 1
+                    else:
+                        x += 1
+                return False
+            return True
+
+
+    def validate_word_is_connected(self, word, location, orientation, scrabble_game):
+            if not self.is_empty:
+                current_player = scrabble_game.players[scrabble_game.current_player]
+                connected_tile = current_player.get_connected_tile(word, location, orientation, scrabble_game)
+                if connected_tile == []:
+                    return False
+                return True
+            return True 
 
 
 
@@ -147,23 +120,22 @@ class Board:
 
 
     def put_word(self, word, location, orientation):
-        x, y = map(int, location)
-        dx, dy = (0, 1) if orientation == 'H' else (1, 0)
-
-        for letter in word:
-            self.grid[x][y] = letter
-            x, y = x + dx, y + dy
+        self.is_empty = False
+        x, y = location
+        x, y = int(x), int(y)
+        for tile in word:
+            self.grid[x][y].letter = tile
+            if orientation == 'H':
+                y += 1
+            else:
+                x += 1
 
 
     def validate_word_placement(self, word, location, orientation, scrabbleGame):
-        validations = [
-            self.validate_word_is_connected(word, location, orientation),
-            self.validate_word_len(word, location, orientation),
-            self.validate_word_inside_board(word, location, orientation),
-            self.check_word(word, Dictionary().file_path),
-            scrabbleGame.players[scrabbleGame.current_player].validate_tiles(word)
-        ]
-
-        if any(not valid for valid in validations):
-            return False 
+        if not self.validate_word_is_connected(word, location, orientation, scrabbleGame) or \
+        not self.validate_word_len(word, location, orientation) or \
+        not self.validate_word_inside_board(word, location, orientation) or \
+        not self.check_word(word, Dictionary().file_path) or \
+        not scrabbleGame.players[scrabbleGame.current_player].validate_tiles(word, location, orientation, scrabbleGame): #PROBAR CON TODOS LOS AMARILLOS Y VALIDATE TILES
+            return False
         return True
