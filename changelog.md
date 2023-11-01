@@ -1,4 +1,12 @@
 # Changelog
+## 1/11/23
+### Added
++ Scrabble 
+    - exchange_wildtile method
+    - test_exchange_wildtile
+    - test_exchange_wildtile_wrong
+
++ Dockerfile
 
 
 ## 31/10/23

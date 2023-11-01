@@ -172,6 +172,29 @@ class TestScrabbleGame(unittest.TestCase):
 
 
 
+    @patch('builtins.input', return_value ='A')
+    def test_exchange_wildtile(self, mock_input):
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.players[scrabbleGame.current_player].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1),Tile('*', 0)]
+        scrabbleGame.exchange_wildtile()
+        self.assertEqual(len(scrabbleGame.players[scrabbleGame.current_player].tiles), 6)
+        self.assertEqual(scrabbleGame.players[scrabbleGame.current_player].tiles[5].letter, 'A' )
+   
+    @patch('builtins.input', side_effect =['2', 'A'])
+    def test_exchange_wildtile_wrong(self, mock_input):
+        scrabbleGame = ScrabbleGame(2)
+        scrabbleGame.players[scrabbleGame.current_player].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1),Tile('*', 0)]
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        scrabbleGame.exchange_wildtile()
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        expected_output = """
+Por favor, ingrese una ficha válida.
+"""
+        self.assertEqual(output,expected_output)
+        
+
 
 if __name__ == '__main__':
     unittest.main()

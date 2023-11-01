@@ -4,12 +4,6 @@ from game.player import Player
 from game.bagtiles import BagTiles
 
 
-
-from game.board import Board
-from game.player import Player
-from game.bagtiles import BagTiles
-
-
 class ScrabbleGame:
     def __init__(self, players_count):
         self.board = Board()
@@ -23,6 +17,7 @@ class ScrabbleGame:
 
 
     def next_turn(self):
+        self.players[self.current_player].tiles.extend(self.bag_tiles.take(7 - len(self.players[self.current_player].tiles)))
         self.current_player = (self.current_player + 1) % len(self.players)
 
 
@@ -69,6 +64,53 @@ class ScrabbleGame:
     
 
 
-    
+    def exchange_wildtile(self):
+        player = self.players[self.current_player]
+        wildtile = next((tile for tile in player.tiles if tile.letter == '*'), None)
 
-    # def Tiles_to_change_ask (self)
+        while wildtile:
+            new_letter = input("\nIngrese la nueva letra: ").upper()
+            new_tile = self.bag_tiles.get_tile(new_letter)
+
+            if new_tile:
+                player.tiles.remove(wildtile)
+                player.tiles.append(new_tile)
+                return
+
+            print("\nPor favor, ingrese una ficha válida.")
+
+        print("\nNo tiene comodines.")
+
+
+    def ask_tiles_to_change(self):
+        tiles_to_change = input("\nIngrese las fichas que desea cambiar separadas por comas (0 para volver):  ")
+        if tiles_to_change == '0':
+            return
+        tiles_to_change = tiles_to_change.replace(' ', '')
+        tiles_to_change = tiles_to_change.upper().split(',')
+        tiles = []
+        try:
+            for i in tiles_to_change:
+                tiles.append(self.bag_tiles.get_tile(i))
+            for tile in tiles:
+                found = False
+                for player_tile in self.players[self.current_player].tiles:
+                    if tile.letter == player_tile.letter:
+                        found = True
+                        break
+                if not found:
+                    print("Ficha no encontrada: " + tile.letter)
+                    self.ask_tiles_to_change()
+
+        except AttributeError:
+            print("\nPor favor, ingrese una ficha válida.")
+            self.ask_tiles_to_change()
+
+        self.bag_tiles.put(tiles)
+        random.shuffle(self.bag_tiles.tiles)
+        new_tiles = self.bag_tiles.take(len(tiles))
+        self.players[self.current_player].tiles.extend(new_tiles)
+        self.players[self.current_player].remove_tiles(tiles_to_change)
+        self.next_turn()
+
+    
