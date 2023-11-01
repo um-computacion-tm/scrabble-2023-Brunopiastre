@@ -1,22 +1,4 @@
 # Changelog
-## 4/11/23
-+ Main
-    - Main test
-
-## 3/11/23
-+ Scrabble
-    - ask_tiles_to_change Tests
-    - End method
-## 2/11/23
-### Added
-
-+ Board
-    - test_validate_word_placement_not_empty
-### Fixed 
-+ Board
-    - Tests 
-+ Dictionary
-    - Tests
 
 ## 1/11/23
 ### Added
