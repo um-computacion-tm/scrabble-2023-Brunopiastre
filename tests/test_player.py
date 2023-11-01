@@ -4,6 +4,7 @@ from unittest.mock import patch
 from game.player import Player
 from game.tile import Tile
 from game.bagtiles import BagTiles
+from game.scrabble import ScrabbleGame
 
 
 class TestPlayer(unittest.TestCase):
@@ -17,7 +18,7 @@ class TestPlayer(unittest.TestCase):
 
             len(player_1.tiles),
 
-            0,
+            7,
 
         )
 
@@ -49,19 +50,21 @@ class TestPlayer(unittest.TestCase):
 
 
     def test_validate_tiles(self):
-        player_1 = Player()
-        player_1.tiles = [Tile('C', 1), Tile('A', 1), Tile('S', 1), Tile('A', 1)]
+        location = (7,7)
+        orientation = 'H'
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[scrabbleGame.current_player].tiles = [Tile('C', 1), Tile('A', 1), Tile('S', 1), Tile('A', 1)]
         word = 'CASA'
-        result = player_1.validate_tiles(word)
-        self.assertEqual(result, True)
-        
+        self.assertEqual(scrabbleGame.players[scrabbleGame.current_player].validate_tiles(word, location, orientation, scrabbleGame), True)
+
 
     def test_validate_tiles_wrong(self):
-        player_1 = Player()
-        player_1.tiles = []
+        location = (7,7)
+        orientation = 'H'
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[scrabbleGame.current_player].tiles = []
         word = 'CASA'
-        result = player_1.validate_tiles(word)
-        self.assertEqual(result, False)
+        self.assertEqual(scrabbleGame.players[scrabbleGame.current_player].validate_tiles(word, location, orientation, scrabbleGame), False)
 
 
     def test_remove_tiles(self):
@@ -78,6 +81,29 @@ class TestPlayer(unittest.TestCase):
         player.tiles = [Tile('A', 1), Tile('B', 3), Tile('C', 3), Tile('D', 2), Tile('E', 1)]
         player.remove_tiles('XYZ')
         self.assertEqual(len(player.tiles), 5)
+
+
+
+    def test_get_connected_tile(self):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1),scrabbleGame.board)
+        word = 'CASA'
+        location = (7,7)
+        orientation = 'H'
+        self.assertEqual(scrabbleGame.players[scrabbleGame.current_player].get_connected_tile(word, location, orientation, scrabbleGame), ['C'])
+
+
+
+    def test_get_connected_tile2(self):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.board.grid[7][7].add_letter(Tile('C', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][8].add_letter(Tile('A', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][9].add_letter(Tile('S', 1),scrabbleGame.board)
+        scrabbleGame.board.grid[7][10].add_letter(Tile('A', 1),scrabbleGame.board)
+        word = 'CASAS'
+        location = (7,7)
+        orientation = 'H'
+        self.assertEqual(scrabbleGame.players[scrabbleGame.current_player].get_connected_tile(word, location, orientation, scrabbleGame), ['C', 'A', 'S', 'A'])
 
 
 if __name__ == '__main__':

@@ -1,13 +1,38 @@
 # Changelog
+## 4/11/23
++ Main
+    - Main test
+
+## 3/11/23
++ Scrabble
+    - ask_tiles_to_change Tests
+    - End method
+## 2/11/23
+### Added
+
++ Board
+    - test_validate_word_placement_not_empty
+### Fixed 
++ Board
+    - Tests 
++ Dictionary
+    - Tests
+
 ## 1/11/23
 ### Added
+
++ Pĺayer
+    - get_connected_tile
+    - test_validate_tiles changed
+    - test_get_connected_tile
+
+
 + Scrabble 
     - exchange_wildtile method
     - test_exchange_wildtile
     - test_exchange_wildtile_wrong
 
 + Dockerfile
-
 
 ## 31/10/23
 ### Added
