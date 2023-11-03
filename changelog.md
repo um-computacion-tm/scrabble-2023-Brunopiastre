@@ -1,5 +1,11 @@
 # Changelog
 
+## 3/11/23
+### Added
+
++ Scrabble
+    - ask_tiles_to_change Tests
+    - End method
 ## 1/11/23
 ### Added
 

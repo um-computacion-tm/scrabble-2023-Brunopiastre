@@ -196,5 +196,76 @@ Por favor, ingrese una ficha válida.
         
 
 
+    @patch('builtins.input', return_value='A,B,C')
+    def test_ask_tiles_to_change(self, mock_input):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[0].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1)]
+        scrabbleGame.ask_tiles_to_change()
+        self.assertEqual(len(scrabbleGame.players[0].tiles), 7)
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        scrabbleGame.display_tiles(scrabbleGame.players[0])
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        expected_output = """[A,1] [B,3] [C,3] [D,2] [E,1] """
+        self.assertIsNot(output,expected_output)
+
+    @patch('builtins.input', side_effect =['L','A,B,C'])
+    def test_ask_tiles_to_change_not_found(self, mock_input):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[0].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1)]
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        scrabbleGame.ask_tiles_to_change()
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        expected_output = """Ficha no encontrada: L
+"""
+        self.assertEqual(output,expected_output)
+
+    @patch('builtins.input', side_effect =['a,%','0'])
+    def test_ask_tiles_to_change_not_valid(self, mock_input):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[0].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1)]
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        scrabbleGame.ask_tiles_to_change()
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        expected_output = """
+Por favor, ingrese una ficha válida.
+"""
+        self.assertEqual(output,expected_output)
+
+    @patch('builtins.input', side_effect =['0'])
+    def test_ask_tiles_to_change_return(self, mock_input):
+        scrabbleGame = ScrabbleGame(players_count=3)
+        scrabbleGame.players[0].tiles = [Tile('A', 1),Tile('B', 3),Tile('C', 3),Tile('D', 2),Tile('E', 1)]
+        
+        self.assertEqual(scrabbleGame.ask_tiles_to_change(), None)
+
+
+
+
+    def test_end(self):
+            scrabbleGame = ScrabbleGame(2)
+            scrabbleGame.players[0].score = 150
+            scrabbleGame.players[1].score = 100
+            captured_output = io.StringIO()
+            sys.stdout = captured_output
+            scrabbleGame.end()
+            sys.stdout = sys.__stdout__
+            output = captured_output.getvalue()
+            expected_output = """Fin del juego\n
+Los puntajes finales son:
+Jugador      Puntaje
+-------      -------
+Jugador 0       150
+Jugador 1       100
+Jugador 0 es el ganador!
+"""
+            self.assertEqual(output,expected_output)    
+
+
 if __name__ == '__main__':
     unittest.main()

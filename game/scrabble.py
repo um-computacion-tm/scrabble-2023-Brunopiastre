@@ -2,6 +2,7 @@ import random
 from game.board import Board
 from game.player import Player
 from game.bagtiles import BagTiles
+from game.tile import Tile
 
 
 class ScrabbleGame:
@@ -101,11 +102,11 @@ class ScrabbleGame:
                 if not found:
                     print("Ficha no encontrada: " + tile.letter)
                     self.ask_tiles_to_change()
-
+            
         except AttributeError:
             print("\nPor favor, ingrese una ficha válida.")
             self.ask_tiles_to_change()
-
+        
         self.bag_tiles.put(tiles)
         random.shuffle(self.bag_tiles.tiles)
         new_tiles = self.bag_tiles.take(len(tiles))
@@ -113,4 +114,22 @@ class ScrabbleGame:
         self.players[self.current_player].remove_tiles(tiles_to_change)
         self.next_turn()
 
-    
+
+    def end(self):
+        print("Fin del juego\n")
+        print("Los puntajes finales son:")
+        print("Jugador      Puntaje")
+        print("-------      -------")
+        max_score = 0
+        i = 0
+        for player in self.players:
+            player.id = self.current_player + i
+            i += 1
+            if player.score > max_score:
+                max_score = player.score
+        for player in self.players:
+            print(f"{'Jugador'} {player.id}       {player.score}")
+            if player.score == max_score:
+                id_winner = player.id
+        print(f"{'Jugador'} {id_winner} es el ganador!")
+        
