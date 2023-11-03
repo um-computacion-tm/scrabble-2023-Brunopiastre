@@ -1,5 +1,86 @@
 # Changelog
 
+## 3/11/23
+### Added
++ Main
+    - Main test
+    
++ Scrabble
+    - ask_tiles_to_change Tests
+    - End method
+## 1/11/23
+### Added
+
+### Fixed 
++ Board
+    - Tests 
+
++ Dictionary
+    - Tests
+
++ Board
+    - test_validate_word_placement_not_empty
+
+
++ Pĺayer
+    - get_connected_tile
+    - test_validate_tiles changed
+    - test_get_connected_tile
+
+
++ Scrabble 
+    - exchange_wildtile method
+    - test_exchange_wildtile
+    - test_exchange_wildtile_wrong
+
++ Dockerfile
+
+## 31/10/23
+### Added
++ Scrabble 
+    - create_cell_list method & test
+    - create_cell_list_vertical test
+    - create_cell_list_horizontal test
+    
++ Player
+    - Increase score method & tests
++ Scrabble
+    - Create tile list method 
+    
+## 30/10/23
+### Added
+
++ Board
+    - validate_word_placement method 
+    - put_word method
+    - test_put_word_horizontal
+    - test_put_word_vertical 
+## 29/10/23
+### Added
++ BagTile
+    - Get_tile method and test
+
++ Scrabble
+    - show board method & test 
+
++ Tile
+    - repr method & test
+## 28/10/23
+### Added 
++ Main
+    - Main method 
+
+## 27/10/23
+### Added
++ Player
+    - set_nickname method & test
+
++ Board
+    - triple_word_multiplier
+    - double_word_multiplier
+    - triple_letter_multiplier
+    - double_letter_multiplier
+    
 
 ## 26/10/23
 ### Added 
