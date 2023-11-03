@@ -121,4 +121,4 @@ class BagTiles:
 
 
     def get_tile(self, letter):
-        return next((tile for tile in self.tiles if tile.letter == letter), None)
+        return next((tile   for tile in self.tiles if tile.letter == letter), None)

@@ -6,27 +6,20 @@ from game.tile import Tile
 
 
 class TestDictionary(unittest.TestCase):
-    
-    def test_dictionary_true(self):        
-        dictionary = Dictionary()
-        file = dictionary.file_path
+    pass
+    def test_dictionary_true(self):
         board = Board()
-        word = [
-            Cell(letter=Tile('C', 1)),
-            Cell(letter=Tile('A', 1)),
-            Cell(letter=Tile('S', 2)),
-            Cell(letter=Tile('A', 1)),]
-        self.assertEqual(board.check_word(word,file),True)    
-    def test_dictionary_false(self):        
         dictionary = Dictionary()
-        file = dictionary.file_path
+        word = 'CASA'
+        file_path = dictionary.file_path
+        self.assertEqual(board.check_word(word, file_path), True)
+
+    def test_dictionary_false(self):
         board = Board()
-        word = [
-            Cell(letter=Tile('C', 1)),
-            Cell(letter=Tile('C', 1)),
-            Cell(letter=Tile('S', 2)),
-            Cell(letter=Tile('A', 1)),]
-        self.assertEqual(board.check_word(word,file),False)
+        dictionary = Dictionary()
+        word = 'CASSSS'
+        file_path = dictionary.file_path
+        self.assertEqual(board.check_word(word, file_path), False)
         
 if __name__ == '__main__':
     unittest.main()
