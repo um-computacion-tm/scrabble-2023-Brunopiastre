@@ -1,7 +1,18 @@
 # Changelog
 
 ## 5/11/23
+### Added 
++ cli
+    - set_player_nicknames
+    - handle_option
+
+I had to reduce the complexity of the code so that it passes the codeclimate
+
 ### Fixed
++ cli 
+    - get_players_count
+    - main
+
 + Player
     - Remove tiles
 

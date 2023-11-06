@@ -1,9 +1,6 @@
 from game.scrabble import ScrabbleGame
 
-
-def main():
-  
-    print("Bienvenido!")
+def get_players_count():
     while True:
         try:
             players_count = int(input("Ingrese cantidad de jugadores: "))
@@ -12,21 +9,50 @@ def main():
             break
         except ValueError:
             print("Error Ingrese de 2 a 4 jugadores")
-    scrabbleGame = ScrabbleGame(players_count=players_count)
-    print("Cantidad de jugadores: ",len(scrabbleGame.players))
+    return players_count
 
+def set_player_nicknames(scrabbleGame):
     for i in range(len(scrabbleGame.players)):
         scrabbleGame.players[i].set_nickname()
-        
 
-        
+def handle_option(scrabbleGame, option):
+    if option == '1':
+        scrabbleGame.show_board()
+    elif option == '2':
+        scrabbleGame.show_score()
+    elif option == '3':
+        print('Sus fichas son: ')
+        scrabbleGame.display_tiles(scrabbleGame.players[scrabbleGame.current_player])   
+    elif option == '4':
+        put_word(scrabbleGame)
+    elif option == '5':
+        scrabbleGame.bag_tiles.put(scrabbleGame.players[scrabbleGame.current_player].tiles)
+        scrabbleGame.bag_tiles.take(len(scrabbleGame.players[scrabbleGame.current_player].tiles))
+        scrabbleGame.ask_tiles_to_change()
+    elif option == '6':
+        scrabbleGame.next_turn()
+    elif option == '7':
+        scrabbleGame.exchange_wildtile() 
+    elif option == '8': 
+        scrabbleGame.end()
+        return False
+    else:
+        print ('------------------------------------------------------------------------------------------------------\n')
+        print("Opción inválida")
+        print ('------------------------------------------------------------------------------------------------------\n')
+    return True
+
+def main():
+    print("Bienvenido!")
+    players_count = get_players_count()
+    scrabbleGame = ScrabbleGame(players_count=players_count)
+    print("Cantidad de jugadores: ",len(scrabbleGame.players))
+    set_player_nicknames(scrabbleGame)
     while(True):
-
         if scrabbleGame.end_game() == True:
             print("La bolsa de fichas esta vacia, el juego ha terminado.\n")
             scrabbleGame.end()
             break
-
         print('+' * 100)
         print('~' * 100)
         print('Scrabble')
@@ -45,43 +71,8 @@ def main():
         print('Sus fichas son:')
         scrabbleGame.display_tiles(scrabbleGame.players[scrabbleGame.current_player])
         option = input("\nIngrese una opción: ")
-
-
-        if option == '1':
-            scrabbleGame.show_board()
-        
-        elif option == '2':
-            scrabbleGame.show_score()
-        
-        elif option == '3':
-            print('Sus fichas son: ')
-            scrabbleGame.display_tiles(scrabbleGame.players[scrabbleGame.current_player])   
-        
-        elif option == '4':
-            put_word(scrabbleGame)
-        
-        elif option == '5':
-            scrabbleGame.bag_tiles.put(scrabbleGame.players[scrabbleGame.current_player].tiles)
-            scrabbleGame.bag_tiles.take(len(scrabbleGame.players[scrabbleGame.current_player].tiles))
-            scrabbleGame.ask_tiles_to_change()
-        
-        elif option == '6':
-            scrabbleGame.next_turn()
-        
-        elif option == '7':
-            scrabbleGame.exchange_wildtile() 
-
-        elif option == '8': 
-            scrabbleGame.end()
+        if not handle_option(scrabbleGame, option):
             break
-
-
-        else:
-            print ('------------------------------------------------------------------------------------------------------\n'
-           )
-            print("Opción inválida")
-            print ('------------------------------------------------------------------------------------------------------\n'
-           )
 
 def put_word(scrabbleGame):
     word = input("Ingrese la palabra (0 para volver): ")
