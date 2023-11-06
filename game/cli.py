@@ -107,3 +107,6 @@ def put_word(scrabbleGame):
         print("Palabra invalida")
         put_word(scrabbleGame)
 
+
+if __name__ == '__main__':
+    main()

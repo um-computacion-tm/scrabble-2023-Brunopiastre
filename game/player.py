@@ -36,7 +36,7 @@ class Player:
 
     
     def remove_tiles(self, word):
-        self.tiles = [tile for tile in self.tiles if tile.letter not in word]
+        self.tiles = [tile for tile in self.tiles if tile.letter not in word] #
 
 
     def get_connected_tile(self, word, location, orientation, scrabbleGame):

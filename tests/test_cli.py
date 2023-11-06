@@ -2,8 +2,8 @@ import unittest
 from unittest.mock import patch, MagicMock
 import io
 from unittest.mock import patch
-from game.main import main
-from game.main import put_word
+from game.cli import main
+from game.cli import put_word
 class TestMain(unittest.TestCase):
 
     @patch('builtins.input', side_effect=['2', '8'])
@@ -100,6 +100,8 @@ class TestMain(unittest.TestCase):
         mock_board.validate_word_placement.assert_called()
         mock_scrabbleGame.return_value.players[mock_scrabbleGame.return_value.current_player].remove_tiles.assert_not_called()
         mock_scrabbleGame.return_value.players[mock_scrabbleGame.return_value.current_player].increse_score.assert_not_called()
+
+
 
 if __name__ == '__main__':
     unittest.main()

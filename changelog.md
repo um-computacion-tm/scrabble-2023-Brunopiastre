@@ -1,5 +1,10 @@
 # Changelog
 
+## 5/11/23
+### Fixed
++ Player
+    - Remove tiles
+
 ## 3/11/23
 ### Added
 + Main

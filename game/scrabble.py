@@ -111,7 +111,7 @@ class ScrabbleGame:
         random.shuffle(self.bag_tiles.tiles)
         new_tiles = self.bag_tiles.take(len(tiles))
         self.players[self.current_player].tiles.extend(new_tiles)
-        self.players[self.current_player].remove_tiles(tiles_to_change)
+        self.players[self.current_player].remove_tiles(tiles_to_change) 
         self.next_turn()
 
 
