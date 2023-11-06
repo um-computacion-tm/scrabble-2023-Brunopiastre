@@ -8,7 +8,7 @@ class TestMain(unittest.TestCase):
 
     @patch('builtins.input', side_effect=['2', '8'])
     def test_main_valid_input(self, mock_input):
-        with patch('game.main.ScrabbleGame') as mock_scrabbleGame:
+        with patch('game.cli.ScrabbleGame') as mock_scrabbleGame:
             with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
                 main()
                 output = fake_stdout.getvalue().strip()
@@ -16,7 +16,7 @@ class TestMain(unittest.TestCase):
 
     @patch('builtins.input', side_effect=['1', '5', '2', 'julian', 'agustin', '8'])
     def test_main_invalid_input(self, mock_input):
-        with patch('game.main.ScrabbleGame') as mock_scrabbleGame:
+        with patch('game.cli.ScrabbleGame') as mock_scrabbleGame:
             with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
                 main()
                 output = fake_stdout.getvalue().strip()
