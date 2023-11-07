@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 
 
 
-CMD [ "sh", "-c", "coverage run -m unittest && coverage report -m && python -m game.cli " ]  
+CMD [ "sh", "-c", "coverage run -m unittest && coverage report -m && python -m game.cli " ]
