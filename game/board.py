@@ -114,9 +114,9 @@ class Board:
 
 
     def set_Cell_multiplier(self, coordinate, multiplier_type, multiplier_value):
-        self.grid[coordinate[0]][coordinate[1]].multiplier_type = multiplier_type
-        self.grid[coordinate[0]][coordinate[1]].multiplier = multiplier_value
-
+        cell = self.grid[coordinate[0]][coordinate[1]]
+        cell.multiplier_type = multiplier_type
+        cell.multiplier = multiplier_value
 
 
     def put_word(self, word, location, orientation):
